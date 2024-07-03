@@ -170,15 +170,15 @@ export function ClientChat({
       append({ content: input, role: "user" });
       setInput("");
     }
+    window.ReactNativeWebView.postMessage(
+      JSON.stringify({ type: "successfulSearch" })
+    );
   };
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="">
       <div className="flex-1 overflow-auto p-4">
         <div className="grid gap-4">
-          {parsedMessages.map((message) => (
-            <ChatMessage key={message.id} message={message} />
-          ))}
           <div className="ml-5">
             {currentArtifact && (
               <Artifact title="Loading Artifact..." loading={true} />
